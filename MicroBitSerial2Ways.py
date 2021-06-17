@@ -7,7 +7,7 @@
 ### Jako první akci v tomto spouštěči nastavte jakoukoliv proměnnou na ( sériový číst dokud (#v) )
 ### Poté se s touto proměnnou dá operovat jakkoliv, přepíše se po každém poslání dat
 
-from time import perf_counter, sleep
+from time import sleep
 import serial
 import glob
 import sys
