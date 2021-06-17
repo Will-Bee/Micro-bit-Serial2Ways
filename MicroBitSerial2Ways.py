@@ -7,13 +7,10 @@
 ### Jako první akci v tomto spouštěči nastavte jakoukoliv proměnnou na ( sériový číst dokud (#v) )
 ### Poté se s touto proměnnou dá operovat jakkoliv, přepíše se po každém poslání dat
 
-from time import sleep
+from time import perf_counter, sleep
 import serial
 import glob
 import sys
-
-
-
 
 
 
@@ -40,9 +37,12 @@ class serialHandler:
 
         if len(self.portlist) == 0:
             print("[!]: No ports found!")
+
+            print("[!]: Exiting...")
+
             sleep(2)
-            print("\033c", end="")
-            self.portSelector()
+
+            exit()
 
         else:
             print("[-]:", self.portlist)
@@ -59,7 +59,7 @@ class serialHandler:
             print("[!]: Wrong option!")
             self.portSelector()
 
-    def serial_ports(self): ### Jediná část kodu kterou sem převzal z internetu
+    def serial_ports(self): ### Jediná část kodu kterou sem převzal z internetu ###
         """ Lists serial port names
 
             :raises EnvironmentError:
