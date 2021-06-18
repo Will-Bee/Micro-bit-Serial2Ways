@@ -27,7 +27,7 @@ class serialHandler:
         self.read()
 
     def variables(self):
-        self.inputMessageRequest = "WaitForInput"
+        self.inputMessageRequest = "_WaitForInput_"
         self.portlist = self.serial_ports()
 
 
