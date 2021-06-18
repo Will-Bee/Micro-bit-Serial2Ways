@@ -103,6 +103,11 @@ class serialHandler:
                 print("[>]:", self.device.readline())
                 if self.inputMessageRequest in str(self.device.readline()):
                     self.write()
+            except KeyboardInterrupt:
+                print("[!]: Exiting...")
+                sleep(2)
+                exit()
+
             except:
                 print("[!]: Disconectet!")
                 try:
