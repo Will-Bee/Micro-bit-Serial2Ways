@@ -102,9 +102,15 @@ class serialHandler:
             try:
                 self.message = self.device.readline()
                 if self.inputMessageRequest in str(self.message):
-                    self.write()
+                    try:
+                        self.write()
+
+                    except:
+                        print("[!]: Only ASCII charecters!")
+
                 if self.message == b'':
                     pass
+                
                 else:
                     print("[>]:", self.message)
                 
