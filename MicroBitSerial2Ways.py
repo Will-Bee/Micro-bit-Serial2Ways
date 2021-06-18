@@ -20,8 +20,8 @@ class serialHandler:
 
     def __init__(self):
         print("\033c", end="")
-        self.variables()
 
+        self.variables()
         self.portSelector()
         self.setdevice()
         self.read()
@@ -99,13 +99,20 @@ class serialHandler:
 
     def read(self):
         while 1:
-            print("[>]:", self.device.readline())
-            if self.inputMessageRequest in str(self.device.readline()):
-                print("[</>]: -----------------------------")
-                print("[</>]: Device want an input message!")
-                self.write()
+            try:
+                print("[>]:", self.device.readline())
+                if self.inputMessageRequest in str(self.device.readline()):
+                    self.write()
+            except:
+                print("[!]: Disconectet!")
+                try:
+                    self.setdevice()
+                except:
+                    sleep(2)
 
     def write(self):
+        print("[</>]: -----------------------------")
+        print("[</>]: Device want an input message!")
         self.inputMessageString = input("[</>]: Enter string: ")
         print("[</>]: -----------------------------")
 
