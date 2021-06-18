@@ -93,23 +93,28 @@ class serialHandler:
         return result
 
     def setdevice(self):
-        self.device = serial.Serial(self.port, 115200, timeout=.1)
+        self.device = serial.Serial(self.port, 115200, timeout=1)
 
 
 
     def read(self):
         while 1:
             try:
-                print("[>]:", self.device.readline())
-                if self.inputMessageRequest in str(self.device.readline()):
+                self.message = self.device.readline()
+                if self.inputMessageRequest in str(self.message):
                     self.write()
+                if self.message == b'':
+                    pass
+                else:
+                    print("[>]:", self.message)
+                
             except KeyboardInterrupt:
                 print("[!]: Exiting...")
                 sleep(2)
                 exit()
 
             except:
-                print("[!]: Disconectet!")
+                print("[!]: Disconected!")
                 try:
                     self.setdevice()
                 except:
