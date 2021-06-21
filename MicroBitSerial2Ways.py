@@ -128,12 +128,13 @@ class serialHandler:
         self.inputMessageString = input("[</>]: Enter string: ")
         print("[</>]: -----------------------------")
 
-        self.inputMessageString = ascii(self.inputMessageString)
+        try:
+            self.inputMessageString = ascii(self.inputMessageString)
+            self.inputMessageBytes = bytes((self.inputMessageString + "#"), "ascii")
+            self.device.write(self.inputMessageBytes)
 
-
-        self.inputMessageBytes = bytes((self.inputMessageString + "#"), "ascii")
-        self.device.write(self.inputMessageBytes)
-
+        except:
+            print(("[!]: Convert to ASCII Failed!"))
 
 
 
