@@ -37,11 +37,8 @@ class serialHandler:
 
         if len(self.portlist) == 0:
             print("[!]: No ports found!")
-
             print("[!]: Exiting...")
-
             sleep(2)
-
             exit()
 
         else:
@@ -52,11 +49,13 @@ class serialHandler:
             self.selected_int = int(self.selected_int)
             self.port_id = self.selected_int - 1
             self.port = self.portlist[self.port_id]
+
             print("[-]: Port", self.port, "selected \n")
 
         except:
             print("\033c", end="")
             print("[!]: Wrong option!")
+
             self.portSelector()
 
     def serial_ports(self): ### Jediná část kodu kterou sem převzal z internetu ###
@@ -81,6 +80,7 @@ class serialHandler:
             raise EnvironmentError('Unsupported platform')
 
         result = []
+
         for port in ports:
             try:
                 s = serial.Serial(port)
@@ -101,6 +101,7 @@ class serialHandler:
         while 1:
             try:
                 self.message = self.device.readline()
+
                 if self.inputMessageRequest in str(self.message):
                     self.write()
 
@@ -119,6 +120,7 @@ class serialHandler:
                 print("[!]: Disconected!")
                 try:
                     self.setdevice()
+                    
                 except:
                     sleep(2)
 
