@@ -1,2 +1,2 @@
 # Micro-bit-Serial2Ways
-Python app for reading python data and sending some tada too
+Python-based communication protocol for sending and receiving data with micro:bit
